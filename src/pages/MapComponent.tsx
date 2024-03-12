@@ -10,7 +10,6 @@ import '../styles/MapComponent.css';
 
 export const MapComponent: React.FC = () => {
   const [map, setMap] = useState<google.maps.Map | null>(null);
-  const [markers, setMarkers] = useState<IMarker[]>([]);
   const [selectedMarker, setSelectedMarker] = useState<IMarker | null>(null);
 
   const fetchMarks = () => {
@@ -18,21 +17,23 @@ export const MapComponent: React.FC = () => {
     firestore.collection('quests').get().then(querySnapshot => {
       querySnapshot.forEach(doc => {
         const data = doc.data();
-        const marker = new window.google.maps.Marker({
-          position: { lat: data.location.lat, lng: data.location.lng },
-          map,
-          draggable: true,
-        });
-
-        marker.addListener('click', () => {
-          setSelectedMarker({ id: doc.id, marker });
-        });
-
-        newMarkers.push({ id: doc.id, marker });
+        if (data.location) {
+          const marker = new window.google.maps.Marker({
+            position: { lat: data.location.lat, lng: data.location.lng },
+            map,
+            draggable: true,
+          });
+  
+          marker.addListener('click', () => {
+            setSelectedMarker({ id: doc.id, marker });
+          });
+  
+          newMarkers.push({ id: doc.id, marker });
+        }
       });
-      setMarkers(newMarkers);
     });
   };
+  
 
   useEffect(() => {
     fetchMarks()
@@ -44,7 +45,6 @@ export const MapComponent: React.FC = () => {
 
   const handleMapClick = async (event: any) => {
     if (!map || selectedMarker) return;
-
     const newMarker = new window.google.maps.Marker({
       position: { lat: event.lat, lng: event.lng },
       map,
@@ -81,20 +81,20 @@ export const MapComponent: React.FC = () => {
       const { id, marker } = selectedMarker;
       marker.setMap(null);
       await firestore.collection('quests').doc(id).delete();
-      setMarkers(prevMarkers => prevMarkers.filter(item => item.id !== id));
       setSelectedMarker(null);
     }
   };
 
   const handleDeleteAllMarkers = async () => {
     try {
+      const querySnapshot = await firestore.collection('quests').get();
+  
       const batch = firestore.batch();
-      markers.forEach(({ id }) => {
-        const docRef = firestore.collection('quests').doc(id);
-        batch.delete(docRef);
+      querySnapshot.forEach(doc => {
+        batch.delete(doc.ref);
       });
       await batch.commit();
-      setMarkers([]);
+  
     } catch (error) {
       console.error('Error deleting all markers: ', error);
     }
