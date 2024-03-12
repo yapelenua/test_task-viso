@@ -13,15 +13,15 @@
 }
 
 .button.delete-all-button {
-  background-color: #f44336; /* Червоний колір */
+  background-color: #f44336;
 }
 
 .button:hover {
-  background-color: #45a049; /* Зелений колір при наведенні */
+  background-color: #45a049;
 }
 
 .button.delete-all-button:hover {
-  background-color: #d32f2f; /* Червоний колір при наведенні */
+  background-color: #d32f2f;
 }
 
 .button-container {
