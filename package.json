@@ -1,0 +1,63 @@
+{
+  "name": "test-task-viso",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@react-firebase/firestore": "^0.5.5",
+    "@react-google-maps/api": "^2.19.3",
+    "@react-google-maps/marker-clusterer": "^2.19.2",
+    "@react-leaflet/core": "^2.1.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/googlemaps": "^3.43.3",
+    "@types/jest": "^27.5.2",
+    "@types/leaflet": "^1.9.8",
+    "@types/node": "^16.18.88",
+    "@types/react": "^18.2.65",
+    "@types/react-dom": "^18.2.21",
+    "dotenv": "^16.4.5",
+    "firebase": "^10.8.1",
+    "google-map-react": "^2.2.1",
+    "leaflet": "^1.9.4",
+    "leaflet.markercluster": "^1.5.3",
+    "marker-with-label": "^1.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-leaflet": "^4.2.1",
+    "react-leaflet-markercluster": "^3.0.0-rc1",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.5",
+    "uuid": "^9.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/google-map-react": "^2.1.10",
+    "@types/react-leaflet": "^3.0.0",
+    "@types/react-leaflet-markercluster": "^3.0.4"
+  }
+}
