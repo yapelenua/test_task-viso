@@ -7,7 +7,7 @@ import { firestore } from "../firebase/firebase";
 import { IMarker } from '../types/marker.types';
 import '../styles/MapComponent.css';
 
-const MapComponent: React.FC = () => {
+export const MapComponent: React.FC = () => {
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const [markers, setMarkers] = useState<IMarker[]>([]);
   const [selectedMarker, setSelectedMarker] = useState<IMarker | null>(null);
@@ -121,5 +121,3 @@ const MapComponent: React.FC = () => {
     </div>
   );
 };
-
-export default MapComponent;
