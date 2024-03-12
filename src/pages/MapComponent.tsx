@@ -5,6 +5,7 @@ import 'firebase/compat/firestore';
 import { ApiKey } from '../helpers/api-key';
 import { firestore } from "../firebase/firebase";
 import { IMarker } from '../types/marker.types';
+import '../styles/MapComponent.css';
 
 const MapComponent: React.FC = () => {
   const [map, setMap] = useState<google.maps.Map | null>(null);

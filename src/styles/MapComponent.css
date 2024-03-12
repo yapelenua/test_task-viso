@@ -1,0 +1,30 @@
+.button {
+  background-color: #4CAF50; /* Зелений колір */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.button.delete-all-button {
+  background-color: #f44336; /* Червоний колір */
+}
+
+.button:hover {
+  background-color: #45a049; /* Зелений колір при наведенні */
+}
+
+.button.delete-all-button:hover {
+  background-color: #d32f2f; /* Червоний колір при наведенні */
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
