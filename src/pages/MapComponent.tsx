@@ -3,7 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { ApiKey } from '../helpers/api-key';
-import {firestore} from "../firebase/firebase";
+import { firestore } from "../firebase/firebase";
 import { IMarker } from '../types/marker.types';
 
 const MapComponent: React.FC = () => {
@@ -34,7 +34,7 @@ const MapComponent: React.FC = () => {
 
   useEffect(() => {
     fetchMarks()
-  });
+  }, []);
 
   const handleApiLoaded = (mapInstance: any) => {
     setMap(mapInstance);
@@ -110,9 +110,13 @@ const MapComponent: React.FC = () => {
       >
       </GoogleMapReact>
       {selectedMarker && (
-        <button onClick={handleDeleteMarker}>Delete Selected Marker</button>
+        <div className="button-container">
+          <button className="button" onClick={handleDeleteMarker}>Delete Selected Marker</button>
+        </div>
       )}
-      <button onClick={handleDeleteAllMarkers}>Delete All Markers</button>
+      <div className="button-container">
+        <button className="button delete-all-button" onClick={handleDeleteAllMarkers}>Delete All Markers</button>
+      </div>
     </div>
   );
 };
